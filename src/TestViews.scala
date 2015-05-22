@@ -15,7 +15,9 @@ object TestViews {
 
     val l = ViewList(longL)
 
-    val lm = l.lazymap(x => x*2)
+    //this is a joke
+    def expensiveOp(x: Int) = x*x
+    val lm = l.lazymap(expensiveOp(_))
     //print return SeqViewM
     println(lm)
     println(lm(0))
