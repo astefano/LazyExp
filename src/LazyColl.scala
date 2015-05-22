@@ -1,6 +1,6 @@
 //adopted & adapted from http://matt.might.net/articles/implementation-of-lazy-list-streams-in-scala/
 
-package org
+package org.lazyexp
 
 abstract class LazyColl[+A] {
   def el : A
