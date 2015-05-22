@@ -1,7 +1,7 @@
 /* example taken from the first proposal at: http://stackoverflow.com/questions/23031310/lazy-val-to-implement-lazy-lists-in-scala?rq=1
 */
 
-package org
+package org.lazyexp
  
 object LazyList {
 
