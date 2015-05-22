@@ -1,4 +1,4 @@
-package org
+package org.lazyexp
 
 case class ViewList[A](self: List[A]) {
   val lv = self.view
