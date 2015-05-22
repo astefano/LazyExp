@@ -1,7 +1,7 @@
 # LazyExp
-small experiments (some reusing existing code on the web) on implementing lazy transformations in Scala 
+Summary: small experiments (some reusing existing code on the web) on implementing lazy transformations in Scala. Starting problem: mimic RDDs... 
 
-Convention (adopted from the first paper on RDDs): 
+Convention (adopted from the '12 paper on RDDs https://www.cs.berkeley.edu/~matei/papers/2012/nsdi_spark.pdf): 
 - operations are of two types: transformers (like map, filter) and actions (like count, reduce)
 - *P* stands for "the problem i considered"
 
