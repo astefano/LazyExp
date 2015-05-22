@@ -5,7 +5,7 @@ name := "LazyExp"
 // All other initialization methods are implemented in terms of these.
 version := "0.1"
 
-organization := "org"
+organization := "org.lazyexp"
 
 // append -deprecation to the options passed to the Scala compiler
 scalacOptions += "-deprecation"
@@ -15,7 +15,7 @@ scalacOptions += "-deprecation"
 
 libraryDependencies += "commons-lang" % "commons-lang" % "2.6"
 
-libraryDependencies += "org.scalatest" % "scalatest_2.9.1" % "1.6.1"
+libraryDependencies += "org.scalatest" % "scalatest_2.10" % "1.9.1" % "test"
 
 testOptions in Test += Tests.Argument("-oDF")
 
