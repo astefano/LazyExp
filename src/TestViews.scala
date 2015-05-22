@@ -21,10 +21,21 @@ object TestViews {
     //print return SeqViewM
     println(lm)
     println(lm(0))
+    
+  // inspired from http://stackoverflow.com/questions/3361478/what-are-views-for-collections-and-when-would-you-want-to-use-them
+
+    case class Transf(n: Int) {println("Transf " + n)}
+ 
     val lm5 = l.lazytake(5)
     println(lm5)
     println(lm5.length)
     println(lm5.reduce(_+_))
+
+    //prints only 3 Transf
+    val lmf1 = lm5.map(x => Transf(x)).collectFirst{case Transf(3) => println("stop")}
+
+    //prints 5 Transf
+    val lmf2 = lm5.force.map(x => Transf(x)).collectFirst{case Transf(3) => println("stop")}
   }
 
 }
