@@ -11,11 +11,15 @@ organization := "org.lazyexp"
 scalacOptions += "-deprecation"
 
 // set the Scala version used for the project
-//scalaVersion := "2.11.6"
+scalaVersion := "2.11.6"
 
 libraryDependencies += "commons-lang" % "commons-lang" % "2.6"
 
 libraryDependencies += "org.scalatest" % "scalatest_2.10" % "1.9.1" % "test"
+
+libraryDependencies <+=	(scalaVersion)("org.scala-lang" % "scala-reflect" % _)
+
+libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value
 
 testOptions in Test += Tests.Argument("-oDF")
 
