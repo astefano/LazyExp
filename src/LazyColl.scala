@@ -56,8 +56,12 @@ object TestLazyCompo {
   import LazyCollImplicit._ 
   
   def main(args : Array[String]) {
+    //dummy fct
+    def f(x: Int) = x*2
     
     def initFrom(n : Int) : LazyColl[Int] = n compose initFrom(n+1)
+
+    def initBelow(n : Int) : LazyColl[Int] = if (n > 0) n compose initBelow(n-1) else n compose LazyEmpty
 
     //although initFrom generates an infinite collection, applying map is fine (compared to the map in TestLazyF.scala where we have an overflow)
     val ml = initFrom(3) map (x => x*2)
@@ -72,5 +76,23 @@ object TestLazyCompo {
     
     var ml4 = ml.take(20).filter(x => x < 10)
     println("the number of elements in the first 20 even numbers bigger than 4 and smaller than 10  = " + ml4.count)
+
+    val start = System.currentTimeMillis
+    val myrdd = initBelow(1000000)
+    val r = myrdd.filter(x => x % 3000 == 0).map(x => f(x)).el
+    //val res = myrdd.reduce(_+_)
+    println("myrdd.count = " + r)    
+    println("Time in millis for lazy: " + (System.currentTimeMillis - start))
+
+    //test nonlazy   
+    val start2 = System.currentTimeMillis
+    val l = (1 to 1000000).toList
+    val r2 = l.filter(x => x % 3000 == 0).map(x => f(x)).head
+    //val res = myrdd.reduce(_+_)
+    println("l.count = " + r2)    
+    println("Time in millis for nonlazy: " + (System.currentTimeMillis - start))
+
+    
+    
   }
 }
